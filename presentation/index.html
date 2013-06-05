@@ -3,327 +3,230 @@
 
 	<head>
 		<meta charset="utf-8">
-
 		<title>GHC Extensions - Turbo Haskell</title>
-
 		<meta name="description" content="GHC Extensions - Turbo Haskell - A talk on some GHC Extensions">
 		<meta name="author" content="Lyndon Maydwell">
-
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
-
-		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+		<link rel="stylesheet" href="css/extra.css" id="theme">
 		<link rel="stylesheet" href="lib/css/zenburn.css">
-
-		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 		<script>
-			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+			  document.write( '<link rel="stylesheet" href="css/print/'
+			+ ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' )
+			+ '.css" type="text/css" media="print">' );
 		</script>
-
 	</head>
 
 	<body>
-
 		<div class="reveal">
-
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 
 				<section>
-					<h1>Reveal.js</h1>
-					<h3>HTML Presentations Made Easy</h3>
-					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-					</p>
+					<h1>GHC Extensions</h1>
+					<h3> &gt;&gt;&gt; Turbo Haskell</h3>
+					<br>
+					<br>
+					<p> <small>Created by Lyndon Maydwell ( <a href="mailto:maydwell@gmail.com">maydwell@gmail.com</a> ) </small> </p>
+					<p> <small>Presented with <a href="http://lab.hakim.se/reveal-js">reveal.js</a></small> </p>
 				</section>
 
 				<section>
-					<h2>Heads Up</h2>
+					<h2> Overview </h2>
+
+					<p> As everyone knows - Haskell means GHC, and GHC is only worth
+					using if you turn on "ghc --supported-extensions". </p>
+
+					<br>
+
+<pre><code>lyndon@endpin ~ ghc --supported-extensions | sed 's/^/-X/' | xargs ghci
+ghc: panic! (the 'impossible' happened)</code></pre>
+
+					<br>
+					<p> But what are the GHC extensions and why should I (ab)use them? </p>
+
+					<br>
 					<p>
-						reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
-						support for CSS 3D transforms to see it in its full glory.
+						This talk will cover a few of the extensions defined by the
 					</p>
-
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your
-						presentation, but you can see them if you open the speaker notes
-						window (hit 's' on your keyboard).
-					</aside>
-				</section>
-
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>
-							Slides can be nested inside of other slides,
-							try pressing <a href="#" class="navigate-down">down</a>.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Press down or up to navigate.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>Cornify</p>
-						<a class="test" href="http://cornify.com">
-							<img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 3</h2>
-						<p>That's it, time to go back up.</p>
-						<a href="#/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
-
-				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? No problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slid.es" target="_blank">http://slid.es</a>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
-
-				<section>
-					<h2>Works in Mobile Safari</h2>
-					<p>
-						Try it out! You can swipe through the slides and pinch your way to the overview.
-					</p>
-				</section>
-
-				<section>
-					<h2>Marvelous Unordered List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
-
-						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-
-						```
-						<section data-markdown>
-						  ## Markdown support
-
-						  For those of you who like that sort of thing.
-						  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
-
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=cube#/transitions">Cube</a> -
-						<a href="?transition=page#/transitions">Page</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a> -
-						<a href="?transition=linear#/transitions">Linear</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?#/transitions">Default</a>
-					</p>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						Reveal.js comes with a few themes built in: <br>
-						<a href="?theme=sky#/themes">Sky</a> -
-						<a href="?theme=beige#/themes">Beige</a> -
-						<a href="?theme=simple#/themes">Simple</a> -
-						<a href="?theme=serif#/themes">Serif</a> -
-						<a href="?theme=night#/themes">Night</a> -
-						<a href="?#/themes">Default</a>
-					</p>
-					<p>
-						<small>
-							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
-						</small>
-					</p>
-				</section>
-
-				<section>
-					<section data-state="alert">
-						<h2>Global State</h2>
-						<p>
-							Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-							will be added as a class to the document element when the slide is open. This lets you
-							apply broader style changes, like switching the background.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-state="blackout">
-						<h2>"blackout"</h2>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-state="soothe">
-						<h2>"soothe"</h2>
-						<a href="#" class="image navigate-next">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(-90deg);">
-						</a>
-					</section>
-				</section>
-
-				<section data-state="customevent">
-					<h2>Custom Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
-
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
+					<blockquote>
+						Glorious Glasgow Compilation System.
 					</blockquote>
-				</section>
 
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) ) {
-        node.className += ' roll';
-      }
-    };
-  }
-}
-					</code></pre>
-					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
-
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
 				</section>
 
 				<section>
 					<section>
-						<h2>Fragmented Views</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<ol>
-							<li class="fragment"><code>any type</code></li>
-							<li class="fragment"><em>of view</em></li>
-							<li class="fragment"><strong>fragments</strong></li>
-						</ol>
-
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
+						<h2>Q: What is Haskell?</h2>
+						<div class="fragment">
+							<br>
+							<h2>A:</h2>
+							<blockquote>I already know that. <br> It was a prerequisite for attending this talk.</blockquote>
+						</div>
+						<div class="fragment">
+							<br>
+							<h2>But did you know...</h2>
+						</div>
 					</section>
 					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's a few styles of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment roll-in">roll-in</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-green">highlight-green</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
+						<h3>That there are official versions of the Haskell language?</h3>
+						<p> <small> <a href="http://en.wikipedia.org/wiki/Haskell_(programming_language)"> http://en.wikipedia.org/wiki/Haskell_(programming_language) </a> </small> </p>
+						<ul>
+							<li class="fragment"> Haskell 1.0 - 1.4 </li>
+							<li class="fragment"> Haskell 98 </li>
+							<li class="fragment"> Haskell Prime </li>
+							<li class="fragment"> Haskell 2010 </li>
+						</ul>
+					</section>
+					<section>
+						<h3>Or that a large number of people use features that fall outside of these specifications? </h3>
+						<br>
+						<p class="fragment">GHC has become the defacto standard for Haskell use in the <q>Real&nbsp;World&#0153;</q></p>
+						<br>
+						<p class="fragment">Luckily for us, GHC has taken a structured approach to adding further functionality to its implementation of Haskell.</q></p>
+						<br>
+						<p class="fragment">This comes in the form of extensions.</q></p>
 					</section>
 				</section>
 
 				<section>
-					<h2>Spectacular image!</h2>
-					<a class="image" href="http://lab.hakim.se/meny/" target="_blank">
-						<img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
-					</a>
+					<section>
+						<h2> How do I even??  </h2>
+						<p><small> How do I enable &lt;Extension&gt;? </small></p>
+					</section>
+					<section>
+						<h3> With GHC Parameters... </h3>
+						<p><code>foo.hs</code></p>
+						<pre><code> ghc --make -XExtension foo.hs </code></pre>
+					</section>
+					<section>
+						<h3> In Your Source Files... </h3>
+						<p><code>foo.hs</code></p>
+						<pre><code class="haskell"> {-# LANGUAGE Extension #-} </code></pre>
+						<pre><code class="haskell"> {-# OPTIONS_GHC -XExtension #-} </code></pre>
+					</section>
+					<section>
+						<h3> With Cabal... </h3>
+						<p><code>foo.cabal</code></p>
+						<pre><code> Extensions:  Extension </code></pre>
+						<pre><code> Ghc-Options: -fextension </code></pre>
+					</section>
 				</section>
 
 				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an example that's been uploaded to SlideShare.</p>
-					<iframe id="slideshare" src="http://www.slideshare.net/slideshow/embed_code/13872948" width="455" height="356" style="margin:0;overflow:hidden;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
-					<script>
-						document.getElementById('slideshare').attributeName = 'allowfullscreen';
-					</script>
-				</section>
+					<h2> Extensions Covered </h2>
 
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press b or period on your keyboard to enter the 'paused' mode. This mode is helpful when you want to take distracting slides off the screen
-						during a presentation.
-					</p>
-				</section>
-
-				<section>
-					<h2>Stellar Links</h2>
 					<ul>
-						<li><a href="http://slid.es">Try the online editor</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js">Source code on GitHub</a></li>
-						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
+						<li><code>ImplicitParams           </code></li>
+						<li><code>ViewPatterns             </code></li>
+						<li><code>OverloadedStrings        </code></li>
+						<li><code>MonadComprehensions      </code></li>
+						<li><code>MultiParameterTypeClasses</code></li>
+						<li><code>GADTs                    </code></li>
+						<li><code>TemplateHaskell          </code></li>
+						<li><code>QuasiQuotes              </code></li>
+						<li><code>ArrowSyntax              </code></li>
 					</ul>
 				</section>
 
+				<!-- Extension Sections -->
+
 				<section>
-					<h1>THE END</h1>
-					<h3>BY Hakim El Hattab / hakim.se</h3>
+					<h2> Implicit Parameters </h2>
+					<p> <small> <a href="http://www.haskell.org/ghc/docs/latest/html/users_guide/other-type-extensions.html#implicit-parameters"> http://www.haskell.org/ghc/docs/latest/html/users_guide/other-type-extensions.html#implicit-parameters </a> </small> </p>
+					<script src="http://gist.github.com/sordina/5676863.js" type="text/javascript"></script>
+					<p>Turn it on &#8594; <code> ImplicitParams </code></p>
+				</section>
+
+				<section>
+					<h2> View Patterns </h2>
+					<p> <small> <a href="http://hackage.haskell.org/trac/ghc/wiki/ViewPatterns"> http://hackage.haskell.org/trac/ghc/wiki/ViewPatterns </a> </small> </p>
+					<script src="http://gist.github.com/sordina/5352278.js" type="text/javascript"></script>
+					<p>Turn it on &#8594; <code> ViewPatterns </code></p>
+				</section>
+
+				<section>
+					<h2> Overloaded Strings </h2>
+					<p> <small> <a href="http://www.haskell.org/ghc/docs/7.0.1/html/users_guide/type-class-extensions.html#overloaded-strings"> http://www.haskell.org/ghc/docs/7.0.1/html/users_guide/type-class-extensions.html#overloaded-strings </a> </small> </p>
+					<script src="http://gist.github.com/sordina/5714390.js" type="text/javascript"></script>
+					<p>Turn it on &#8594; <code> OverloadedStrings </code></p>
+				</section>
+
+				<section>
+					<section>
+						<h2> Monad Comprehensions </h2>
+						<p> <small> <a href="http://hackage.haskell.org/trac/ghc/wiki/MonadComprehensions"> http://hackage.haskell.org/trac/ghc/wiki/MonadComprehensions </a> </small> </p>
+						<script src="http://gist.github.com/sordina/5714471.js" type="text/javascript"></script>
+						<p>Turn it on &#8594; <code> MonadComprehensions </code></p>
+					</section>
+					<section>
+						<h3>Generalises Various Concepts</h3>
+						<p>Such as...</p>
+						<br>
+						<ul>
+							<li> <a
+								href="http://www.haskell.org/ghc/docs/7.2.1/html/users_guide/syntax-extns.html#parallel-list-comprehensions">
+								Parallel Comprehensions </a> (ParallelListComp)</li>
+							<li> <a
+								href="http://www.haskell.org/ghc/docs/7.2.1/html/users_guide/syntax-extns.html#generalised-list-comprehensions">
+								Transform Comprehensions </a> (SQL-Like Order and Group) </li>
+						</ul>
+					</section>
+					<section>
+						<h3> Parallel List Comprehensions </h3>
+						<p> <small> <a href="http://www.haskell.org/ghc/docs/5.00/set/parallel-list-comprehensions.html"> http://www.haskell.org/ghc/docs/5.00/set/parallel-list-comprehensions.html </a> </small> </p>
+						<script src="http://gist.github.com/sordina/5714594.js" type="text/javascript"></script>
+						<p>Turn it on &#8594; <code> ParallelListComp </code></p>
+					</section>
+				</section>
+
+				<section>
+					<h2> Empty Data Declarations </h2>
+					<p> <small> <a href="http://hackage.haskell.org/trac/haskell-prime/wiki/EmptyDataDecls"> http://hackage.haskell.org/trac/haskell-prime/wiki/EmptyDataDecls </a> </small> </p>
+					<script src="http://gist.github.com/sordina/5714750.js" type="text/javascript"></script>
+					<p>Turn it on &#8594; <code> EmptyDataDecls </code></p>
+					<br>
+					<p><small>Not terribly exciting, but turned on automatically when you use...</small></p>
+				</section>
+
+				<section>
+					<section>
+						<h2> Multi Parameter Type Classes </h2>
+						<p> <small> <a href="http://www.haskell.org/ghc/docs/7.0.1/html/users_guide/type-class-extensions.html#id3172593"> http://www.haskell.org/ghc/docs/7.0.1/html/users_guide/type-class-extensions.html#id3172593 </a> </small> </p>
+						<script src="http://gist.github.com/sordina/5714668.js" type="text/javascript"></script>
+						<p>Turn it on &#8594; <code> MultiParamTypeClasses </code></p>
+					</section>
+					<section>
+						<h3>Seems Simple Enough...</h3>
+						<br>
+						<p><small>But in actual fact, leads to the ability to write advanced type-level functions...</small></p>
+						<p><a href="http://byorgey.wordpress.com/2010/06/29/typed-type-level-programming-in-haskell-part-i-functional-dependencies/"> http://byorgey.wordpress.com/2010/06/29/ty ... nal-dependencies/ </a></p>
+						<br>
+						<p>And more...</p>
+						<p><a href="http://www.haskell.org/haskellwiki/GADTs_for_dummies"> http://www.haskell.org/haskellwiki/GADTs_for_dummies </a></p>
+						<br>
+						<br>
+						<p class="fragment"> Speaking of GADTs... </p>
+					</section>
+				</section>
+
+				<section>
+					<h2 style="font-size:180%;"> Generalised Algebraic Data Types </h2>
+					<p> <small> <a href="http://www.haskell.org/ghc/docs/7.0.3/html/users_guide/data-type-extensions.html#gadt"> http://www.haskell.org/ghc/docs/7.0.3/html/users_guide/data-type-extensions.html#gadt </a> </small> </p>
+					<p>Turn it on &#8594; <code> GADTs </code></p>
+				</section>
+
+				<section>
+					<h2 style="font-size:180%;"> Template Haskell </h2>
+					<p> <small> <a href="http://www.haskell.org/ghc/docs/7.0.2/html/users_guide/template-haskell.html"> http://www.haskell.org/ghc/docs/7.0.2/html/users_guide/template-haskell.html </a> </small> </p>
+					<p>Turn it on &#8594; <code> TemplateHaskell </code></p>
+				</section>
+
+				<section>
+					<h1> Questions? </h1>
 				</section>
 
 			</div>
@@ -344,7 +247,7 @@ function linkify( selector ) {
 				center: true,
 
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
