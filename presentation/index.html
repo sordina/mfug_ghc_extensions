@@ -39,27 +39,208 @@
 				</section>
 
 				<section>
-					<h2> Overview </h2>
+					<section>
+						<h2> Overview </h2>
 
-					<p> As everyone knows - Haskell means GHC, and GHC is only worth
-					using if you turn on "ghc --supported-extensions". </p>
+						<p> As everyone knows - Haskell means GHC, and GHC is only worth
+						using if you turn on "ghc --supported-extensions". </p>
 
-					<br>
+						<br>
 
-<pre><code>lyndon@endpin ~ ghc --supported-extensions | sed 's/^/-X/' | xargs ghci
-ghc: panic! (the 'impossible' happened)</code></pre>
+	<pre><code>lyndon@endpin ~ ghc --supported-extensions | sed 's/^/-X/' | xargs ghci
+	ghc: panic! (the 'impossible' happened)</code></pre>
 
-					<br>
-					<p> But what are the GHC extensions and why should I (ab)use them? </p>
+						<br>
+						<p> But what are the GHC extensions and why should I (ab)use them? </p>
 
-					<br>
-					<p>
-						This talk will cover a few of the extensions defined by the
-					</p>
-					<blockquote>
-						Glorious Glasgow Compilation System.
-					</blockquote>
+						<br>
+						<p>
+							This talk will cover a few of the extensions defined by the
+						</p>
+						<blockquote>
+							Glorious Glasgow Compilation System.
+						</blockquote>
+					</section>
 
+					<section>
+						<pre><code>lyndon@endpin ~ ghc --supported-extensions</code></pre>
+						<p>...</p>
+<pre style="max-height: 80%; overflow: scroll;"><code>Haskell98
+Haskell2010
+Unsafe
+Trustworthy
+Safe
+CPP
+NoCPP
+PostfixOperators
+NoPostfixOperators
+TupleSections
+NoTupleSections
+PatternGuards
+NoPatternGuards
+UnicodeSyntax
+NoUnicodeSyntax
+MagicHash
+NoMagicHash
+PolymorphicComponents
+NoPolymorphicComponents
+ExistentialQuantification
+NoExistentialQuantification
+KindSignatures
+NoKindSignatures
+EmptyDataDecls
+NoEmptyDataDecls
+ParallelListComp
+NoParallelListComp
+TransformListComp
+NoTransformListComp
+MonadComprehensions
+NoMonadComprehensions
+ForeignFunctionInterface
+NoForeignFunctionInterface
+UnliftedFFITypes
+NoUnliftedFFITypes
+InterruptibleFFI
+NoInterruptibleFFI
+CApiFFI
+NoCApiFFI
+GHCForeignImportPrim
+NoGHCForeignImportPrim
+LiberalTypeSynonyms
+NoLiberalTypeSynonyms
+Rank2Types
+NoRank2Types
+RankNTypes
+NoRankNTypes
+ImpredicativeTypes
+NoImpredicativeTypes
+TypeOperators
+NoTypeOperators
+ExplicitNamespaces
+NoExplicitNamespaces
+RecursiveDo
+NoRecursiveDo
+DoRec
+NoDoRec
+Arrows
+NoArrows
+ParallelArrays
+NoParallelArrays
+TemplateHaskell
+NoTemplateHaskell
+QuasiQuotes
+NoQuasiQuotes
+ImplicitPrelude
+NoImplicitPrelude
+RecordWildCards
+NoRecordWildCards
+NamedFieldPuns
+NoNamedFieldPuns
+RecordPuns
+NoRecordPuns
+DisambiguateRecordFields
+NoDisambiguateRecordFields
+OverloadedStrings
+NoOverloadedStrings
+GADTs
+NoGADTs
+GADTSyntax
+NoGADTSyntax
+ViewPatterns
+NoViewPatterns
+TypeFamilies
+NoTypeFamilies
+BangPatterns
+NoBangPatterns
+MonomorphismRestriction
+NoMonomorphismRestriction
+NPlusKPatterns
+NoNPlusKPatterns
+DoAndIfThenElse
+NoDoAndIfThenElse
+RebindableSyntax
+NoRebindableSyntax
+ConstraintKinds
+NoConstraintKinds
+PolyKinds
+NoPolyKinds
+DataKinds
+NoDataKinds
+InstanceSigs
+NoInstanceSigs
+MonoPatBinds
+NoMonoPatBinds
+ExplicitForAll
+NoExplicitForAll
+AlternativeLayoutRule
+NoAlternativeLayoutRule
+AlternativeLayoutRuleTransitional
+NoAlternativeLayoutRuleTransitional
+DatatypeContexts
+NoDatatypeContexts
+NondecreasingIndentation
+NoNondecreasingIndentation
+RelaxedLayout
+NoRelaxedLayout
+TraditionalRecordSyntax
+NoTraditionalRecordSyntax
+LambdaCase
+NoLambdaCase
+MultiWayIf
+NoMultiWayIf
+MonoLocalBinds
+NoMonoLocalBinds
+RelaxedPolyRec
+NoRelaxedPolyRec
+ExtendedDefaultRules
+NoExtendedDefaultRules
+ImplicitParams
+NoImplicitParams
+ScopedTypeVariables
+NoScopedTypeVariables
+PatternSignatures
+NoPatternSignatures
+UnboxedTuples
+NoUnboxedTuples
+StandaloneDeriving
+NoStandaloneDeriving
+DeriveDataTypeable
+NoDeriveDataTypeable
+DeriveFunctor
+NoDeriveFunctor
+DeriveTraversable
+NoDeriveTraversable
+DeriveFoldable
+NoDeriveFoldable
+DeriveGeneric
+NoDeriveGeneric
+DefaultSignatures
+NoDefaultSignatures
+TypeSynonymInstances
+NoTypeSynonymInstances
+FlexibleContexts
+NoFlexibleContexts
+FlexibleInstances
+NoFlexibleInstances
+ConstrainedClassMethods
+NoConstrainedClassMethods
+MultiParamTypeClasses
+NoMultiParamTypeClasses
+FunctionalDependencies
+NoFunctionalDependencies
+GeneralizedNewtypeDeriving
+NoGeneralizedNewtypeDeriving
+OverlappingInstances
+NoOverlappingInstances
+UndecidableInstances
+NoUndecidableInstances
+IncoherentInstances
+NoIncoherentInstances
+PackageImports
+NoPackageImports
+</code></pre>
+
+					</section>
 				</section>
 
 				<section>
@@ -218,15 +399,59 @@ ghc: panic! (the 'impossible' happened)</code></pre>
 				</section>
 
 				<section>
-					<h2 style="font-size:180%;"> Generalised Algebraic Data Types </h2>
-					<p> <small> <a href="http://www.haskell.org/ghc/docs/7.0.3/html/users_guide/data-type-extensions.html#gadt"> http://www.haskell.org/ghc/docs/7.0.3/html/users_guide/data-type-extensions.html#gadt </a> </small> </p>
-					<p>Turn it on &#8594; <code> GADTs </code></p>
+					<section>
+						<h2 style="font-size:180%;"> Generalised Algebraic Data Types </h2>
+						<p> <small> <a href="http://www.haskell.org/ghc/docs/7.0.3/html/users_guide/data-type-extensions.html#gadt"> http://www.haskell.org/ghc/docs/7.0.3/html/users_guide/data-type-extensions.html#gadt </a> </small> </p>
+						<p>Turn it on &#8594; <code> GADTs </code></p>
+						<p><small> Examples taken from
+							<a href="http://en.wikibooks.org/wiki/Haskell/GADT">http://en.wikibooks.org/wiki/Haskell/GADT</a> </small></p>
+					</section>
+					<section>
+						<h3>Let's Say...</h3>
+						<p> <small> You want to represent a small pure expression language in haskell: </small> </p>
+						<script src="http://gist.github.com/sordina/f5f851a34609030f8ca6.js" type="text/javascript"></script>
+						<p> You can create Integers, Add them, and Multiply them. </p>
+					</section>
+					<section>
+						<h3> And Now for Something Slightly Different</h3>
+						<p><small>We want to be able to compare values, and derive a boolean result:</small></p>
+						<script src="http://gist.github.com/sordina/30f04682180415906c99.js" type="text/javascript"></script>
+						<br>
+						<p>Oops, that doesn't work so well...</p>
+					</section>
+					<section>
+						<h3>With Enough Data-Types...</h3>
+						<p>We can make it work...</p>
+						<script src="http://gist.github.com/sordina/096704f20ea6fa1baf8a.js" type="text/javascript"></script>
+						<p class="fragment">But it sucks!</p>
+					</section>
+					<section>
+						<h3>Maybe if we...</h3>
+						<p><small>introduce a type parameter to keep track of our expression type...</small></p>
+						<script src="http://gist.github.com/sordina/d97997ba78ea6a384191.js" type="text/javascript"></script>
+					</section>
+					<section>
+						<h3>Finally, with GADTs</h3>
+						<script src="http://gist.github.com/sordina/0d23aed45fdc66a575ec.js" type="text/javascript"></script>
+						<p>Things are working, concise, and expressive</p>
+						<br>
+						<p class="fragment">This is just the tip of the iceberg when it comes to GADTs.</p>
+					</section>
 				</section>
 
 				<section>
 					<h2 style="font-size:180%;"> Template Haskell </h2>
 					<p> <small> <a href="http://www.haskell.org/ghc/docs/7.0.2/html/users_guide/template-haskell.html"> http://www.haskell.org/ghc/docs/7.0.2/html/users_guide/template-haskell.html </a> </small> </p>
 					<p>Turn it on &#8594; <code> TemplateHaskell </code></p>
+				</section>
+
+				<section>
+					<h2> Obviously this is just an overview... </h2>
+					<br>
+					<p> The best way to learn about GHC's extensions is to pick one and
+					    see what you can do with it. Experimentation is key! </p>
+					<br>
+					<h3 class="fragment"> Go and Play! </h3>
 				</section>
 
 				<section>
