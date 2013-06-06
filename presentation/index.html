@@ -27,13 +27,15 @@
 
 				<section>
 					<h1>GHC Extensions</h1>
-					<h3> &gt;&gt;&gt; Turbo Haskell</h3>
+					<h3 class="fragment"> &gt;&gt;&gt; Turbo Haskell</h3>
 					<br>
 					<br>
-					<p> <small>Created by Lyndon Maydwell (<a href="mailto:maydwell@gmail.com">maydwell@gmail.com</a>) </small> </p>
-					<p> <small>Presentation: <a href="http://sordina.github.io/mfug_ghc_extensions">http://sordina.github.io/mfug_ghc_extensions</a>
-						(presented with <a href="http://lab.hakim.se/reveal-js">reveal.js</a>)</small> </p>
-					<p> <small>Github: <a href="https://github.com/sordina/mfug_ghc_extensions">https://github.com/sordina/mfug_ghc_extensions</a></small> </p>
+					<div class="fragment">
+						<p> <small>Created by Lyndon Maydwell (<a href="mailto:maydwell@gmail.com">maydwell@gmail.com</a>) </small> </p>
+						<p> <small>Presentation: <a href="http://sordina.github.io/mfug_ghc_extensions">http://sordina.github.io/mfug_ghc_extensions</a>
+							(presented with <a href="http://lab.hakim.se/reveal-js">reveal.js</a>)</small> </p>
+						<p> <small>Github: <a href="https://github.com/sordina/mfug_ghc_extensions">https://github.com/sordina/mfug_ghc_extensions</a></small> </p>
+					</div>
 				</section>
 
 				<section>
@@ -263,6 +265,20 @@ ghc: panic! (the 'impossible' happened)</code></pre>
 					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
+
+
+			var pre_e = {x: 0}
+
+			window.onclick = function(e){
+				pre_e = e
+				Reveal.next()
+				document.body.style.cursor = "none"
+			}
+
+			window.onmousemove = function(e){
+				var delta = Math.abs(pre_e.x - e.x)
+				if(delta > 50) { document.body.style.cursor = "auto" }
+			}
 
 		</script>
 
